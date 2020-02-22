@@ -21,7 +21,7 @@ func main() {
 	defer conn.Close()
 	reader := bufio.NewReader(os.Stdin)
 	for {
-		data, err := reader.ReadString('\r')
+		data, err := reader.ReadString('\n')
 		handleErr(err)
 
 		data = strings.TrimSpace(data)  // 简单来说以TrimSpace作为去除首尾的空白字符,在这里等效于Trim( data , "\r\n") ! 换行是CRLF模式

@@ -13,10 +13,12 @@ func handleErr(err error) {
 		fmt.Println(err)
 		panic(err.Error())
 	}
+	fmt.Scanln()
 }
 
 func main() {
-	conn, err := net.Dial("tcp", ":20000")
+	fmt.Println("请输入(end结束):")
+	conn, err := net.Dial("tcp", "127.0.0.1:9090")
 	handleErr(err)
 	defer conn.Close()
 	reader := bufio.NewReader(os.Stdin)

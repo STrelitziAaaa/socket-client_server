@@ -15,7 +15,7 @@ func handleErr(err error) {
 }
 
 func main() {
-	ls, err := net.Listen("tcp", ":20000")
+	ls, err := net.Listen("tcp", ":9999")
 	handleErr(err)
 	for {
 		conn, err := ls.Accept()
@@ -29,7 +29,7 @@ func main() {
 				var buf = [1024]byte{}
 				n, err := conn.Read(buf[:])
 				handleErr(err)
-				fmt.Println("Read:", string(buf[:n]), "num:", n)
+				fmt.Println("Read:", string(buf[:n]), "len:", n)
 				conn.Write([]byte("收到!"))
 				if strings.ToUpper(string(buf[:n])) == "END"{
 					fmt.Println("END")
